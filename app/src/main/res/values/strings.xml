@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Mejora</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="login">Login</string>
+    <string name="correo">Correo</string>
+    <string name="password">Password</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="tres">Tienes que tener cuenta de que cada usuario \n solo puede tener 3 personajes</string>
+</resources>
