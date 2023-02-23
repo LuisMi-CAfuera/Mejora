@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="header">#23252b</color>
+    <color name="login_background">#141519</color>
+    <color name="login_button">#f47521</color>
+    <color name="Transparente">#00FFFFFF</color>
+    <color name="amarillo">#fbb718</color>
+    <color name="gris">#434141</color>
+    <color name="negroedit">#141519</color>
+    <color name="grisnav">#24252a</color>
+    <color name="azulRaro">#213945</color>
 </resources>

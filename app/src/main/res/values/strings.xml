@@ -6,4 +6,5 @@
     <string name="password">Password</string>
     <string name="registrarse">Registrarse</string>
     <string name="tres">Tienes que tener cuenta de que cada usuario \n solo puede tener 3 personajes</string>
+    <string name="selecciona_un_personaje">Selecciona un personaje</string>
 </resources>
