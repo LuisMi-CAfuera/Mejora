@@ -19,17 +19,33 @@ class Login : AppCompatActivity() {
         val mochila = ArrayList<Objetos>()
         mochila.add(Objetos("Espada", 1, 10, 10))
         mochila.add(Objetos("Escudo", 1, 10, 10))
-        val personaje = Personaje("Pepito", 200,"goblin","guerrero",200,200,200,200,mochila)
-        val pepito = Personaje("Pepito2", 200,"goblin1","guerrero1",200,200,200,200,mochila)
-        val personaje3 = Personaje("Pepito3", 200,"goblin2","guerrero2",200,200,200,200,mochila)
-        //array de personajes
+        val personaje = Personaje(1,"Pepito", 200,"goblin","guerrero",200,200,200,200,mochila)
+        val personaje2 = Personaje(2,"Luis", 200,"goblin1","guerrero1",200,200,200,200,mochila)
+        val personaje3 = Personaje(3,"Juan", 200,"goblin2","guerrero2",200,200,200,200,mochila)
+
+        val personajes = ArrayList<Personaje>()
+        personajes.add(personaje)
+        personajes.add(personaje2)
+        personajes.add(personaje3)
+
+        val usuario = Partidas("pueba@gmail.com",personajes)
 
         setup()
+
+        for (i in usuario.partidas){
+            println(i.nombre)
+        }
 
 
 
         binding.button.setOnClickListener{
-            db.collection("usuario_Luismi").document("ejemplo1").set(pepito)
+            db.collection("Prueba1").document(usuario.email).set(usuario)
+        }
+
+        binding.button2.setOnClickListener{
+            val intent = Intent(this, Eleccion::class.java)
+            intent.putExtra("email", usuario.email)
+            startActivity(intent)
         }
     }
     private fun setup() {
@@ -44,7 +60,7 @@ class Login : AppCompatActivity() {
                         binding.password.text.toString()
                     ).addOnCompleteListener {
                         if (it.isSuccessful) {
-                            showHome(it.result?.user?.email ?: "", ProviderType.BASIC)
+                            pasar(binding.loginedit.text.toString())
                         }else{
                             showAlert()
                         }
@@ -60,7 +76,7 @@ class Login : AppCompatActivity() {
                         binding.password.text.toString()
                     ).addOnCompleteListener {
                         if (it.isSuccessful) {
-                            showHome(it.result?.user?.email ?: "", ProviderType.BASIC)
+                            pasar(binding.loginedit.text.toString())
                         }else{
                             showAlert()
                         }
@@ -78,12 +94,11 @@ class Login : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun showHome(email:String,provider: ProviderType){
-        val homeIntent: Intent = Intent(this, prueba::class.java).apply {
-            putExtra("email", email)
-            putExtra("provider", provider.name)
-        }
-        startActivity(homeIntent)
+    private fun pasar(email : String){
+        val intent = Intent(this, Eleccion::class.java)
+        intent.putExtra("email", email)
+        startActivity(intent)
     }
+
 
 }

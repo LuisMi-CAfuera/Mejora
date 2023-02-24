@@ -12,6 +12,21 @@
         android:theme="@style/Theme.Mejora"
         tools:targetApi="31">
         <activity
+            android:name=".Objeto"
+            android:exported="false" />
+        <activity
+            android:name=".Dado"
+            android:exported="false" />
+        <activity
+            android:name=".Ficha"
+            android:exported="false" />
+        <activity
+            android:name=".ElegirRaza"
+            android:exported="false" />
+        <activity
+            android:name=".ElegirClase"
+            android:exported="false" />
+        <activity
             android:name=".Eleccion"
             android:exported="false" />
         <activity

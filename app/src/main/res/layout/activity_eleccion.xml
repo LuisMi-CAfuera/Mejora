@@ -22,6 +22,7 @@
         app:layout_constraintVertical_bias="0.066" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Pesonaje1"
         android:layout_width="327dp"
         android:layout_height="125dp"
         android:background="@drawable/fondo_azul"
@@ -47,7 +48,7 @@
             android:id="@+id/Nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre"
+            android:text="@string/nombre"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.058"
@@ -59,7 +60,7 @@
             android:id="@+id/Clase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Clase"
+            android:text="@string/clase"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.058"
@@ -71,7 +72,7 @@
             android:id="@+id/Raza"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Raza"
+            android:text="@string/raza"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.058"
@@ -81,6 +82,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Personaje2"
         android:layout_width="327dp"
         android:layout_height="125dp"
         android:background="@drawable/fondo_azul"
@@ -100,9 +102,45 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/interrogacion" />
+        <TextView
+            android:id="@+id/Nombre2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nombre"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.15" />
+
+        <TextView
+            android:id="@+id/Clase2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clase"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/Nombre2"
+            app:layout_constraintVertical_bias="0.171" />
+
+        <TextView
+            android:id="@+id/Raza2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/raza"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/Clase2"
+            app:layout_constraintVertical_bias="0.305" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Personaje3"
         android:layout_width="327dp"
         android:layout_height="125dp"
         android:background="@drawable/fondo_azul"
@@ -112,6 +150,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Seleccion"
         app:layout_constraintVertical_bias="0.731">
+
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="86dp"
@@ -122,5 +161,65 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/interrogacion" />
+
+        <TextView
+            android:id="@+id/Nombre3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nombre"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.15" />
+
+        <TextView
+            android:id="@+id/Clase3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clase"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/Nombre3"
+            app:layout_constraintVertical_bias="0.171" />
+
+        <TextView
+            android:id="@+id/Raza3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/raza"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/Clase3"
+            app:layout_constraintVertical_bias="0.305" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/Borrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/borrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.461" />
+
+    <Button
+        android:id="@+id/Cargar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cargar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintStart_toEndOf="@+id/Borrar"
+        app:layout_constraintTop_toBottomOf="@+id/Personaje3"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

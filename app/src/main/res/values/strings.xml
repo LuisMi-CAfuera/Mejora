@@ -7,4 +7,31 @@
     <string name="registrarse">Registrarse</string>
     <string name="tres">Tienes que tener cuenta de que cada usuario \n solo puede tener 3 personajes</string>
     <string name="selecciona_un_personaje">Selecciona un personaje</string>
+    <string name="nombre">Nombre</string>
+    <string name="clase">Clase</string>
+    <string name="raza">Raza</string>
+    <string name="borrar">Borrar</string>
+    <string name="cargar">Cargar</string>
+    <string name="Aceptar">Aceptar</string>
+    <string name="Mago">Mago</string>
+    <string name="Arquero">Arquero</string>
+    <string name="Guerrero">Guerrero</string>
+    <string name="Ladron">Ladron</string>
+    <string name="Orco">Orco</string>
+    <string name="Elfo">Elfo</string>
+    <string name="Humano">Humano</string>
+    <string name="Enano">Enano</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Todo">Todo</string>
+    <string name="Seguir">Seguir</string>
+    <string name="Volver">Volver</string>
+    <string name="Dado">Dado</string>
+    <string name="todo">todo</string>
+    <string name="Expli">
+        Comienza la aventura,
+        pulsa el DADO para avanzar.
+        CUIDADO puedes
+        encontrarte enemigos
+    </string>
+
 </resources>

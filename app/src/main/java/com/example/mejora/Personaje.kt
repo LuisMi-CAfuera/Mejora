@@ -4,10 +4,12 @@ import android.content.Context
 import java.io.Serializable
 
 class Personaje {
+    var id: Int = 0
     var nombre: String = ""
     var pesoMochila: Int = 0
     var raza: String=""
     var clase: String=""
+    var lugar : String=""
     var fuerza : Int=0
     var destreza : Int=0
     var defensa : Int=0
@@ -26,7 +28,8 @@ class Personaje {
 
     constructor()
 
-    constructor(nombre: String, pesoMochila: Int, raza: String, clase: String, fuerza: Int, destreza: Int,defensa : Int, vida: Int, mochila: ArrayList<Objetos>) {
+    constructor(id:Int,nombre: String, pesoMochila: Int, raza: String, clase: String, fuerza: Int, destreza: Int,defensa : Int, vida: Int, mochila: ArrayList<Objetos>) {
+        this.id = id
         this.nombre = nombre
         this.pesoMochila = pesoMochila
         this.raza = raza
@@ -80,62 +83,18 @@ class Personaje {
 
 }
 
-class Personajes {
-    var personajes: HashMap<String,Personaje> = HashMap()
 
+
+
+class Partidas{
+    var email : String = ""
+    var partidas  = ArrayList<Personaje>()
+
+    constructor(email: String, partidas: ArrayList<Personaje>) {
+        this.email = email
+        this.partidas = partidas
+    }
     constructor()
 
-    constructor(personajes: HashMap<String,Personaje>) {
-        this.personajes = personajes
-    }
-
-}
-class Partidas() : Serializable {
-    private var listaPartidas = ArrayList<Partida>()
-    fun getListaPartidas(): ArrayList<Partida> {
-        return listaPartidas
-    }
-
-    fun encontrarPartida(nombre_personaje: String): Int {
-        for ((indice, item) in listaPartidas.withIndex()) {
-            if (item.getNombrePersonaje() == nombre_personaje) {
-                return indice
-            }
-        }
-        return -1
-    }
-
-    fun eliminarPartida(i: Int) {
-        if (listaPartidas.isNotEmpty()) {
-            getListaPartidas().removeAt(i)
-        }
-    }
-
-    fun addPartida(partida: Partida) {
-        listaPartidas.add(partida)
-    }
 }
 
-class Partida(private var personaje: Personaje, private var nombre_personaje: String) :
-    Serializable {
-
-    constructor() : this(Personaje(), "")
-
-    fun getNombrePersonaje(): String {
-        return nombre_personaje
-    }
-
-    fun getPersonaje(): Personaje {
-        return personaje
-    }
-
-    fun setNombrePersonaje(name: String) {
-        this.nombre_personaje = name
-    }
-
-    fun setPersonaje(personaje: Personaje) {
-        this.personaje = personaje
-    }
-
-
-}
