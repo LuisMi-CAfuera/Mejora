@@ -58,7 +58,7 @@ class Eleccion : AppCompatActivity() {
                             }
 
                     }else if (partidas2.size == 1){
-                            binding.Cargar.text = "Cagar"
+                            binding.Cargar.text = "Cargar"
                             binding.noTienes.text = "Tienes 1 personaje"
 
                             binding.Nombre.text = partidas2[0].nombre
@@ -82,7 +82,7 @@ class Eleccion : AppCompatActivity() {
                             }
 
                         }else if (partidas2.size == 2){
-                            binding.Cargar.text = "Cagar"
+                            binding.Cargar.text = "Cargar"
                             binding.noTienes.text = "Tienes 2 personajes"
 
                             binding.Nombre.text = partidas2[0].nombre
@@ -110,7 +110,7 @@ class Eleccion : AppCompatActivity() {
                             }
 
                     }else if (partidas2.size == 3){
-                            binding.Cargar.text = "Cagar"
+                            binding.Cargar.text = "Cargar"
                             binding.noTienes.text = "Tienes 3 personajes"
                             binding.Nombre.text = partidas2[0].nombre
                             binding.Clase.text = partidas2[0].clase
