@@ -97,6 +97,7 @@ class Mercader : AppCompatActivity() {
         }
 
     }
+    @SuppressLint("SetTextI18n")
     fun comprar(p: Personaje) {
         val espada = Objetos("Espada", 2, 120, 200)
         val armadura = Objetos("Armadura", 1, 100, 150)
@@ -459,7 +460,7 @@ class Mercader : AppCompatActivity() {
 
                     binding.ComprarOVender.setOnClickListener{
                         var cociente = 0
-                        var precio2 = precio
+                        val precio2 = precio
 
                         cociente = precio / 100
                         if (cociente > 0) {

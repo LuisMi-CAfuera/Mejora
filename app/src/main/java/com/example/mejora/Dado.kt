@@ -135,10 +135,10 @@ class Dado : AppCompatActivity() {
                         if(partida.partidas.size == 0){
                             partida.partidas.add(personaje)
                             db.collection("Final").document(personaje.email).set(partida)
-                        }else if(partida.partidas.size == 1){
+                        }else if(partida.partidas.size == 1 && partida.partidas[0].id != personaje.id){
                             partida.partidas.add(personaje)
                             db.collection("Final").document(personaje.email).set(partida)
-                        }else if(partida.partidas.size == 2){
+                        }else if(partida.partidas.size == 2 && partida.partidas[1].id != personaje.id){
                             partida.partidas.add(personaje)
                             db.collection("Final").document(personaje.email).set(partida)
                         } else{
