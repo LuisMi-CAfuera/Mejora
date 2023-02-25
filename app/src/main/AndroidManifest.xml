@@ -12,6 +12,21 @@
         android:theme="@style/Theme.Mejora"
         tools:targetApi="31">
         <activity
+            android:name=".Muerte"
+            android:exported="false" />
+        <activity
+            android:name=".EnemigoCiudad"
+            android:exported="false" />
+        <activity
+            android:name=".ObjetoCiudad"
+            android:exported="false" />
+        <activity
+            android:name=".MercaderCiudad"
+            android:exported="false" />
+        <activity
+            android:name=".Enemigo"
+            android:exported="false" />
+        <activity
             android:name=".Mercader"
             android:exported="false" />
         <activity
@@ -36,12 +51,6 @@
             android:name=".Eleccion"
             android:exported="false" />
         <activity
-            android:name=".prueba"
-            android:exported="false" />
-        <activity
-            android:name=".registro"
-            android:exported="false" />
-        <activity
             android:name=".Login"
             android:exported="true">
             <intent-filter>
@@ -50,9 +59,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Clase"
-            android:exported="false" />
     </application>
 
 </manifest>

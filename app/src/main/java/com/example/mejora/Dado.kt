@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.mejora.databinding.ActivityDadoBinding
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 
 class Dado : AppCompatActivity() {
@@ -19,6 +20,8 @@ class Dado : AppCompatActivity() {
         val shared= getSharedPreferences("Personaje", Context.MODE_PRIVATE)
         val gson = Gson()
         var json = shared.getString("Personaje", "")
+        var json2 = shared.getString("Partidas", "")
+        val partidas = gson.fromJson(json2, Partidas::class.java)
         val p = gson.fromJson(json, Personaje::class.java)
 
         binding.Valle.setImageResource(R.drawable.valle)
@@ -41,6 +44,10 @@ class Dado : AppCompatActivity() {
 
         binding.Dado.setOnClickListener{
             aleatorio(p)
+        }
+
+        binding.Guardar.setOnClickListener{
+            guardarPartidas(partidas,p)
         }
 
 
@@ -112,5 +119,16 @@ class Dado : AppCompatActivity() {
             intent.putExtra("tipo", "Boss")
             startActivity(intent)
         }
+    }
+    fun guardarPartidas(partidas : Partidas,personaje: Personaje){
+        val db = FirebaseFirestore.getInstance()
+        if(personaje.id == 1){
+            partidas.partidas[0] = personaje
+        }else if(personaje.id == 2){
+            partidas.partidas[1] = personaje
+        }else if(personaje.id == 3){
+            partidas.partidas[2] = personaje
+        }
+        db.collection("partidas").document(partidas.email).set(partidas)
     }
 }

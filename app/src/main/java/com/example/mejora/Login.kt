@@ -16,40 +16,16 @@ class Login : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val mochila = ArrayList<Objetos>()
-        mochila.add(Objetos("Espada", 1, 10, 10))
-        mochila.add(Objetos("Escudo", 1, 10, 10))
-        val personaje = Personaje(1,"Pepito", 200,"goblin","guerrero",200,200,200,200,mochila)
-        val personaje2 = Personaje(2,"Luis", 200,"goblin1","guerrero1",200,200,200,200,mochila)
-        val personaje3 = Personaje(3,"Juan", 200,"goblin2","guerrero2",200,200,200,200,mochila)
 
-        val personajes = ArrayList<Personaje>()
-        personajes.add(personaje)
-        personajes.add(personaje2)
-        personajes.add(personaje3)
 
-        val usuario = Partidas("pueba@gmail.com",personajes)
 
         setup()
 
-        for (i in usuario.partidas){
-            println(i.nombre)
-        }
 
-
-
-        binding.button.setOnClickListener{
-            db.collection("Prueba1").document(usuario.email).set(usuario)
-        }
-
-        binding.button2.setOnClickListener{
-            val intent = Intent(this, Eleccion::class.java)
-            intent.putExtra("email", usuario.email)
-            startActivity(intent)
-        }
     }
     private fun setup() {
         title = "Login"
+        val p = ArrayList<Personaje>()
 
         binding.registro.setOnClickListener {
             if (binding.loginedit.text.isNotEmpty() && binding.password.text.isNotEmpty()) {
@@ -60,6 +36,7 @@ class Login : AppCompatActivity() {
                         binding.password.text.toString()
                     ).addOnCompleteListener {
                         if (it.isSuccessful) {
+                            db.collection("Prueba1").document(binding.loginedit.text.toString()).set(Partidas(binding.loginedit.text.toString(),p))
                             pasar(binding.loginedit.text.toString())
                         }else{
                             showAlert()

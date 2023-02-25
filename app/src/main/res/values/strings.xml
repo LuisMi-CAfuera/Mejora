@@ -33,5 +33,32 @@
         CUIDADO puedes
         encontrarte enemigos
     </string>
+    <string name="comprar">Comprar</string>
+    <string name="menos">-</string>
+    <string name="mas">+</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="vender">Vender</string>
+    <string name="continuar">Continuar</string>
+    <string name="comerciar">Comeciar</string>
+    <string name="volver">Volver</string>
+    <string name="recoger">Recoger</string>
+    <string name="Descripcion">Descripcion</string>
+    <string name="_100_100">100/100</string>
+    <string name="hp_enemigo">HP Enemigo</string>
+    <string name="vida_jugador">100/100</string>
+    <string name="atacar">Atacar</string>
+    <string name="huir">Huir</string>
+    <string name="objetos">Objetos</string>
+    <string name="volver_a_empezar">Volve a Empezar</string>
+    <string name="entrar_a_n_ciudad">Entrar a ciudad</string>
+    <string name="te_queda_derrotar_5_enemigos">Te queda derrotar 5 enemigos</string>
+    <string name="guardar">Guardar</string>
+    <string-array name="Objetos">
+        <item> </item>
+        <item>Espada</item>
+        <item>Escudo</item>
+        <item>Armadura</item>
+        <item>Pocion</item>
+    </string-array>
 
 </resources>

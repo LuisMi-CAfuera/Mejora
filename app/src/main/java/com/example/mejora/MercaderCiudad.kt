@@ -1,23 +1,25 @@
 package com.example.mejora
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.example.mejora.databinding.ActivityMercaderBinding
 import com.google.gson.Gson
 
-class Mercader : AppCompatActivity() {
+class MercaderCiudad : AppCompatActivity() {
     private lateinit var binding: ActivityMercaderBinding
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityMercaderBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
+        binding = ActivityMercaderBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val shared = getSharedPreferences("Personaje", MODE_PRIVATE)
         val gson = Gson()
         var json = shared.getString("Personaje", "")
@@ -87,7 +89,7 @@ class Mercader : AppCompatActivity() {
 
 
         binding.Volver.setOnClickListener {
-            val intent = Intent(this@Mercader, Dado::class.java)
+            val intent = Intent(this@MercaderCiudad, Ciudad::class.java)
             val edit = shared.edit()
             edit.clear()
             json = gson.toJson(p)
@@ -96,7 +98,18 @@ class Mercader : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+//        val adapter = ArrayAdapter(
+//            this@Mercader,
+//            android.R.layout.simple_spinner_item,
+//            objetos.keys.toList()
+//        )
+//        binding.spinner.adapter = adapter
+
+
     }
+
+    @SuppressLint("SetTextI18n")
     fun comprar(p: Personaje) {
         val espada = Objetos("Espada", 2, 120, 200)
         val armadura = Objetos("Armadura", 1, 100, 150)
@@ -148,7 +161,7 @@ class Mercader : AppCompatActivity() {
                             }
                             binding.menos.setOnClickListener {
                                 if (cantidad > 0) {
-                                    p.mochila.removeAt(encontrarObjeto(p.mochila, "Espada"))
+                                    p.mochila.removeAt(encontrarObjeto(p.mochila,"Espada"))
                                     cantidad--
                                     precio = espada.valor * cantidad
                                     binding.CantidadYPrecio.text =
@@ -172,7 +185,7 @@ class Mercader : AppCompatActivity() {
                             }
                             binding.menos.setOnClickListener {
                                 if (cantidad > 0) {
-                                    p.mochila.removeAt(encontrarObjeto(p.mochila, "Armadura"))
+                                    p.mochila.removeAt(encontrarObjeto(p.mochila,"Armadura"))
                                     cantidad--
                                     precio = armadura.valor * cantidad
                                     binding.CantidadYPrecio.text =
@@ -196,7 +209,7 @@ class Mercader : AppCompatActivity() {
                             }
                             binding.menos.setOnClickListener {
                                 if (cantidad > 0) {
-                                    p.mochila.removeAt(encontrarObjeto(p.mochila, "Escudo"))
+                                    p.mochila.removeAt(encontrarObjeto(p.mochila,"Escudo"))
                                     cantidad--
                                     precio = escudo.valor * cantidad
                                     binding.CantidadYPrecio.text =
@@ -221,7 +234,7 @@ class Mercader : AppCompatActivity() {
                             }
                             binding.menos.setOnClickListener {
                                 if (cantidad > 0) {
-                                    p.mochila.removeAt(encontrarObjeto(p.mochila, "Pocion"))
+                                    p.mochila.removeAt(encontrarObjeto(p.mochila,"Pocion"))
                                     cantidad--
                                     precio = pocion.valor * cantidad
                                     binding.CantidadYPrecio.text =
@@ -523,4 +536,10 @@ class Mercader : AppCompatActivity() {
         }
         return -1
     }
+
+
 }
+
+
+
+
