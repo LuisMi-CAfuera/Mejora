@@ -30,11 +30,12 @@ class Eleccion : AppCompatActivity() {
 
 
 
-            val docRef = db.collection("Prueba1").document(email.toString())
+
+            val docRef = db.collection("Final").document(email.toString())
 
             docRef.get().addOnSuccessListener {
                 if(it.exists()){
-                    var partidas = it.toObject(Partidas::class.java)
+                    val partidas = it.toObject(Partidas::class.java)
                     if (partidas != null) {
                         partidas2 = partidas.partidas
                         if(partidas2.size == 0){
@@ -42,17 +43,17 @@ class Eleccion : AppCompatActivity() {
                             binding.noTienes.text = "No tienes personajes"
                             binding.Pesonaje1.setOnClickListener{
                                 if (email != null) {
-                                    crear(email,1, partidas!!)
+                                    crear(email,1)
                                 }
                             }
                             binding.Personaje2.setOnClickListener{
                                 if (email != null) {
-                                    crear(email,2, partidas!!)
+                                    crear(email,2)
                                 }
                             }
                             binding.Personaje3.setOnClickListener{
                                 if (email != null) {
-                                    crear(email,3, partidas!!)
+                                    crear(email,3)
                                 }
                             }
 
@@ -65,18 +66,18 @@ class Eleccion : AppCompatActivity() {
                             binding.Raza.text = partidas2[0].raza
                             binding.imageView.setImageResource(R.drawable.tick)
                             binding.Pesonaje1.setOnClickListener{
-                                cargar(partidas2,1, partidas!!)
+                                cargar(partidas2,1)
                                 idBorrar = 1
                                 binding.Borrar.isEnabled = true
                             }
                             binding.Personaje2.setOnClickListener{
                                 if (email != null) {
-                                    crear(email,2, partidas!!)
+                                    crear(email,2)
                                 }
                             }
                             binding.Personaje3.setOnClickListener{
                                 if (email != null) {
-                                    crear(email,3, partidas!!)
+                                    crear(email,3)
                                 }
                             }
 
@@ -89,7 +90,7 @@ class Eleccion : AppCompatActivity() {
                             binding.Raza.text = partidas2[0].raza
                             binding.imageView.setImageResource(R.drawable.tick)
                             binding.Pesonaje1.setOnClickListener{
-                                cargar(partidas2,1, partidas!!)
+                                cargar(partidas2,1)
                                 idBorrar = 1
                                 binding.Borrar.isEnabled = true
                             }
@@ -98,13 +99,13 @@ class Eleccion : AppCompatActivity() {
                             binding.Raza2.text = partidas2[1].raza
                             binding.imageView2.setImageResource(R.drawable.tick)
                             binding.Personaje2.setOnClickListener{
-                                cargar(partidas2,2, partidas!!)
+                                cargar(partidas2,2)
                                 idBorrar = 2
                                 binding.Borrar.isEnabled = true
                             }
                             binding.Personaje3.setOnClickListener{
                                 if (email != null) {
-                                    crear(email,3, partidas!!)
+                                    crear(email,3)
                                 }
                             }
 
@@ -116,7 +117,7 @@ class Eleccion : AppCompatActivity() {
                             binding.Raza.text = partidas2[0].raza
                             binding.imageView.setImageResource(R.drawable.tick)
                             binding.Pesonaje1.setOnClickListener{
-                                cargar(partidas2,1, partidas!!)
+                                cargar(partidas2,1)
                                 idBorrar = 1
                                 binding.Borrar.isEnabled = true
                             }
@@ -125,7 +126,7 @@ class Eleccion : AppCompatActivity() {
                             binding.Raza2.text = partidas2[1].raza
                             binding.imageView2.setImageResource(R.drawable.tick)
                             binding.Personaje2.setOnClickListener{
-                                cargar(partidas2,2, partidas!!)
+                                cargar(partidas2,2)
                                 idBorrar = 2
                                 binding.Borrar.isEnabled = true
                             }
@@ -134,7 +135,7 @@ class Eleccion : AppCompatActivity() {
                             binding.Raza3.text = partidas2[2].raza
                             binding.imageView3.setImageResource(R.drawable.tick)
                             binding.Personaje3.setOnClickListener{
-                                cargar(partidas2,3, partidas!!)
+                                cargar(partidas2,3)
                                 idBorrar = 3
                                 binding.Borrar.isEnabled = true
                             }
@@ -143,7 +144,7 @@ class Eleccion : AppCompatActivity() {
 
                         binding.Borrar.setOnClickListener{
                             partidas!!.partidas.removeAt(idBorrar-1)
-                            db.collection("Prueba1").document(email.toString()).set(partidas!!)
+                            db.collection("Final").document(email.toString()).set(partidas!!)
                             if(idBorrar == 1){
                                 binding.Nombre.text = "Nombre"
                                 binding.Clase.text = "Clase"
@@ -151,7 +152,7 @@ class Eleccion : AppCompatActivity() {
                                 binding.imageView.setImageResource(R.drawable.interrogacion)
                                 binding.Pesonaje1.setOnClickListener{
                                     if (email != null) {
-                                        crear(email,1, partidas!!)
+                                        crear(email,1)
                                     }
                                 }
                             }else if(idBorrar == 2){
@@ -161,7 +162,7 @@ class Eleccion : AppCompatActivity() {
                                 binding.imageView2.setImageResource(R.drawable.interrogacion)
                                 binding.Personaje2.setOnClickListener{
                                     if (email != null) {
-                                        crear(email,2, partidas!!)
+                                        crear(email,2)
                                     }
                                 }
                             }else if(idBorrar == 3) {
@@ -171,40 +172,18 @@ class Eleccion : AppCompatActivity() {
                                 binding.imageView3.setImageResource(R.drawable.interrogacion)
                                 binding.Personaje3.setOnClickListener {
                                     if (email != null) {
-                                        crear(email, 3, partidas!!)
+                                        crear(email, 3)
                                     }
                                 }
                             }
                         }
-                    }else {
-                            partidas = Partidas()
-                            binding.Borrar.isEnabled = false
-                            binding.Cargar.text = "Crear"
-                            binding.noTienes.text = "No tienes personajes"
-                            binding.Pesonaje1.setOnClickListener{
-                                if (email != null) {
-                                    crear(email,1,partidas)
-                                }
-                            }
-                            binding.Personaje2.setOnClickListener{
-                                if (email != null) {
-                                    crear(email,2,partidas)
-                                }
-                            }
-                            binding.Personaje3.setOnClickListener{
-                                if (email != null) {
-                                    crear(email,3,partidas)
-                                }
-                            }
-
-
                     }
                 }
             }
 
         }
 
-        fun cargar(partidas : ArrayList<Personaje> , id: Int, todo : Partidas){
+        fun cargar(partidas : ArrayList<Personaje> , id: Int){
             val shared =  getSharedPreferences("Personaje", Context.MODE_PRIVATE)
             binding.Cargar.isEnabled = true
             val editor = shared.edit()
@@ -218,22 +197,19 @@ class Eleccion : AppCompatActivity() {
             }
             binding.Cargar.setOnClickListener{
                 json = gson.toJson(personaje)
-                val json2 = gson.toJson(todo)
-                editor.putString("Partidas", json2)
                 editor.putString("Personaje", json)
                 editor.apply()
-                val intent = Intent(this, Dado::class.java)
+                val intent = Intent(this@Eleccion, Dado::class.java)
                 startActivity(intent)
             }
         }
         @SuppressLint("SetTextI18n")
-        fun crear(email : String, id : Int,partidas : Partidas){
+        fun crear(email : String, id : Int){
             val shared =  getSharedPreferences("Personaje", Context.MODE_PRIVATE)
             val editor = shared.edit()
             val gson = Gson()
             var json = ""
             val personaje = Personaje()
-            partidas.email = email
             personaje.email = email
             personaje.id = id
 
@@ -241,11 +217,11 @@ class Eleccion : AppCompatActivity() {
             binding.Cargar.text = "Crear"
             binding.Cargar.setOnClickListener{
                 json = gson.toJson(personaje)
-                val json2 = gson.toJson(partidas)
-                editor.putString("Partidas", json2)
                 editor.putString("Personaje", json)
                 editor.apply()
-                val intent = Intent(this, ElegirClase::class.java)
+                val intent = Intent(this@Eleccion, ElegirClase::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("id", id)
                 startActivity(intent)
             }
 

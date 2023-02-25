@@ -13,7 +13,12 @@ class ElegirClase : AppCompatActivity() {
         binding = ActivityElegirClaseBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val p = Personaje()
+        val shared =  getSharedPreferences("Personaje", Context.MODE_PRIVATE)
+        val gson = Gson()
+        var json = shared.getString("Personaje", "")
+        val editor = shared.edit()
+        val p = gson.fromJson(json, Personaje::class.java)
+        val partidas = intent.getStringExtra("partidas")
         binding.Aceptar.isEnabled = false
 
 
@@ -48,11 +53,8 @@ class ElegirClase : AppCompatActivity() {
         binding.Aceptar.setOnClickListener {
             //cambiar de activity
             val intent = Intent(this@ElegirClase, ElegirRaza::class.java)
-            val shared =  getSharedPreferences("Personaje", Context.MODE_PRIVATE)
-            val editor = shared.edit()
             editor.clear()
-            val gson = Gson()
-            val json = gson.toJson(p)
+            json = gson.toJson(p)
             editor.putString("Personaje", json)
             editor.apply()
             startActivity(intent)

@@ -8,31 +8,33 @@ import android.os.Bundle
 import android.view.View
 import com.example.mejora.databinding.ActivityDadoBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.gson.Gson
 
 class Dado : AppCompatActivity() {
     private lateinit var binding: ActivityDadoBinding
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityDadoBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val shared= getSharedPreferences("Personaje", Context.MODE_PRIVATE)
+        val shared = getSharedPreferences("Personaje", Context.MODE_PRIVATE)
         val gson = Gson()
         var json = shared.getString("Personaje", "")
-        var json2 = shared.getString("Partidas", "")
-        val partidas = gson.fromJson(json2, Partidas::class.java)
         val p = gson.fromJson(json, Personaje::class.java)
 
         binding.Valle.setImageResource(R.drawable.valle)
         binding.PesoMochila.isEnabled = false
         println(p.mochila.toString())
+        println(p.toString())
 
 
-        if(p.pesoMochila < 200){
+
+        if (p.pesoMochila < 200) {
             binding.PesoMochila.text = "Mochila: ${p.pesoMochila}/200"
             binding.PesoMochila.isEnabled = true
-        }else{
+        } else {
             binding.PesoMochila.isEnabled = false
         }
 
@@ -42,30 +44,29 @@ class Dado : AppCompatActivity() {
         editor.putString("Personaje", json)
         editor.apply()
 
-        binding.Dado.setOnClickListener{
+        binding.Dado.setOnClickListener {
             aleatorio(p)
         }
 
-        binding.Guardar.setOnClickListener{
-            guardarPartidas(partidas,p)
+        binding.Guardar.setOnClickListener {
+            guardarPartidas(p)
         }
-
 
 
     }
 
     @SuppressLint("SetTextI18n", "SuspiciousIndentation")
-    fun aleatorio(Personaje: Personaje){
-        var intent : Intent
+    fun aleatorio(Personaje: Personaje) {
+        var intent: Intent
 
         val aleatorio = (1..4).random()
         val gson = Gson()
         val json = gson.toJson(Personaje)
 
 
-        when(aleatorio){
+        when (aleatorio) {
 
-            1 ->{
+            1 -> {
                 //Ir a la activity objeto
                 binding.Explicacion.text = "Ha salido ${aleatorio} has encontrado un  Objeto"
                 binding.BotonC.visibility = View.VISIBLE
@@ -75,7 +76,7 @@ class Dado : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
-            2 ->{
+            2 -> {
                 //Ir a la activity Ciudad
                 binding.Explicacion.text = "Ha salido ${aleatorio} has llegado a una Ciudad"
                 binding.BotonC.visibility = View.VISIBLE
@@ -85,9 +86,10 @@ class Dado : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
-            3 ->{
+            3 -> {
                 //Ir a la activity Mercader
-                binding.Explicacion.text = "Ha salido ${aleatorio}, te has encontrado con un Mercader"
+                binding.Explicacion.text =
+                    "Ha salido ${aleatorio}, te has encontrado con un Mercader"
                 binding.BotonC.visibility = View.VISIBLE
                 binding.BotonC.text = "Hablar con Mercader"
                 binding.BotonC.setOnClickListener {
@@ -95,9 +97,10 @@ class Dado : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
-            4 ->{
+            4 -> {
                 //Ir a la activity Ladron
-                binding.Explicacion.text = "Ha salido ${aleatorio}, te has encontrado con un Enemigo"
+                binding.Explicacion.text =
+                    "Ha salido ${aleatorio}, te has encontrado con un Enemigo"
                 binding.BotonC.visibility = View.VISIBLE
                 binding.BotonC.text = "Pelear con Enemigo"
                 binding.BotonC.setOnClickListener {
@@ -107,28 +110,44 @@ class Dado : AppCompatActivity() {
         }
     }
 
-    fun tipoEnemigo(){
+    fun tipoEnemigo() {
         val aleatorio = (1..10).random()
 
-        if(aleatorio in 1..9){
+        if (aleatorio in 1..9) {
             intent = Intent(this@Dado, Enemigo::class.java)
             intent.putExtra("tipo", "Normal")
             startActivity(intent)
-        }else if(aleatorio == 10){
+        } else if (aleatorio == 10) {
             intent = Intent(this@Dado, Enemigo::class.java)
             intent.putExtra("tipo", "Boss")
             startActivity(intent)
         }
     }
-    fun guardarPartidas(partidas : Partidas,personaje: Personaje){
+
+    fun guardarPartidas(personaje: Personaje) {
         val db = FirebaseFirestore.getInstance()
-        if(personaje.id == 1){
-            partidas.partidas[0] = personaje
-        }else if(personaje.id == 2){
-            partidas.partidas[1] = personaje
-        }else if(personaje.id == 3){
-            partidas.partidas[2] = personaje
-        }
-        db.collection("partidas").document(partidas.email).set(partidas)
+        //Actualizar el campo de la partida con el personaje
+        db.collection("Final").document(personaje.email).get()
+            .addOnSuccessListener {
+                if (it != null) {
+                    val partida = it.toObject(Partidas::class.java)
+                    if (partida != null) {
+                        if(partida.partidas.size == 0){
+                            partida.partidas.add(personaje)
+                            db.collection("Final").document(personaje.email).set(partida)
+                        }else if(partida.partidas.size == 1){
+                            partida.partidas.add(personaje)
+                            db.collection("Final").document(personaje.email).set(partida)
+                        }else if(partida.partidas.size == 2){
+                            partida.partidas.add(personaje)
+                            db.collection("Final").document(personaje.email).set(partida)
+                        } else{
+                            partida.partidas[personaje.id - 1] = personaje
+                            db.collection("Final").document(personaje.email).set(partida)
+                        }
+                    }
+
+                }
+            }
     }
 }

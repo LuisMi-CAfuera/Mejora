@@ -28,6 +28,9 @@ class Ficha : AppCompatActivity() {
         p.defensa = (1..5).random()
         binding.Seguir.isEnabled = false
 
+        println(p.email)
+        println(p.id)
+
 
         when(p.clase){
 
@@ -79,7 +82,7 @@ class Ficha : AppCompatActivity() {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 binding.Seguir.isEnabled = true
-                p.nombre = binding.Nombre.toString()
+                p.nombre = binding.Nombre.text.toString()
             }
             override fun afterTextChanged(s: Editable?) {
             }

@@ -36,7 +36,7 @@ class Login : AppCompatActivity() {
                         binding.password.text.toString()
                     ).addOnCompleteListener {
                         if (it.isSuccessful) {
-                            db.collection("Prueba1").document(binding.loginedit.text.toString()).set(Partidas(binding.loginedit.text.toString(),p))
+                            db.collection("Final").document(binding.loginedit.text.toString()).set(Partidas(binding.loginedit.text.toString(),p))
                             pasar(binding.loginedit.text.toString())
                         }else{
                             showAlert()

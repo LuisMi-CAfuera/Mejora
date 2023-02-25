@@ -96,6 +96,10 @@ class Personaje {
         return clase
     }
 
+    override fun toString(): String {
+        return "Personaje(id=$id, email='$email', nombre='$nombre', pesoMochila=$pesoMochila, raza='$raza', clase='$clase', lugar='$lugar', fuerza=$fuerza, defensa=$defensa, vida=$vida, mochila=$mochila, monedero=$monedero)"
+    }
+
 
 }
 
